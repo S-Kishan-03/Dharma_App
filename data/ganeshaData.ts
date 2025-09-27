@@ -24,8 +24,16 @@ export const ganeshaStaticInfo: StaticDeityInfo = {
       narrative: "Ganesha was created by Goddess Parvati from turmeric paste to guard her while she bathed. When Lord Shiva returned, Ganesha, unaware of his identity, denied him entry. In the ensuing fight, Shiva unknowingly beheaded the boy. To appease a distraught Parvati, Shiva replaced Ganesha's head with that of the first living creature he found, which was an elephant."
     },
     {
-      title: "Role in Mythology",
-      narrative: "Ganesha is invoked at the beginning of any important task, ritual, or ceremony to ensure its smooth completion by removing obstacles. According to legend, he also acted as the scribe for the epic Mahabharata, as dictated by the sage Vyasa, breaking one of his own tusks to continue writing when his pen broke."
+      title: "The Broken Tusk and Mahabharata",
+      narrative: "When the sage Vyasa wanted to compose the Mahabharata, he needed a scribe who could write as fast as he could dictate. Lord Brahma suggested Ganesha for this task. Ganesha agreed on one condition - that Vyasa would not pause in his dictation. When Ganesha's pen broke during writing, he broke off one of his own tusks to continue, ensuring the epic was completed without interruption."
+    },
+    {
+      title: "The Race Around the World",
+      narrative: "Once, Shiva and Parvati wanted to find the most suitable husband for their daughter. They decided to hold a contest - whoever could circle the world three times the fastest would win her hand. Ganesha's brother Kartikeya immediately set off on his peacock. Ganesha, however, simply circled his parents three times, saying 'My parents are my world.' Impressed by his wisdom, they declared him the winner."
+    },
+    {
+      title: "The Moon's Curse",
+      narrative: "After defeating the demon Gajamukhasura, Ganesha was returning home when the moon and his wives laughed at his large belly. Angered, Ganesha cursed the moon that anyone who looked at it on Ganesh Chaturthi would be accused of stealing. Later, when he realized his curse was too harsh, he modified it so that those who accidentally saw the moon could remedy it by listening to or reading the story of the Syamantaka jewel."
     }
   ],
   temples: [
@@ -44,13 +52,27 @@ export const ganeshaStaticInfo: StaticDeityInfo = {
         "Sukh karta dukh harta, varta vighnachi",
         "Nurvi purvi prem krupa jayachi",
         "Sarvangi sundar uti shendurachi",
-        "Kanthi jhalke mal mukataphalaanchi..",
+        "Kanthi jhalke mal mukataphalaanchi",
         "Jaidev jaidev jai mangal murti",
         "Darshanmatre mankamana purti",
         "Ratnakhachit fara tuj gaurikumra",
         "Chandanachi uti kumkumkeshara",
         "Hirejadit mugut shobhato bara",
-        "Runjhunati nupure charni ghagaria..",
+        "Runjhunati nupure charni ghagaria",
+        "Jaidev jaidev jai mangal murti",
+        "Darshanmatre mankamana purti",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra",
+        "Mahaduti pavitra pavitra pavitra"
       ]
     },
     {
@@ -88,6 +110,50 @@ export const ganeshaStaticInfo: StaticDeityInfo = {
             "Dolyani pahin rup tujhe",
             "Preme alingin anande pujin",
             "Bhave ovalin mhane nama",
+            "Sukhachi dayi tu mala",
+            "Dukhachi harta tu mala",
+            "Vighnachi nashak tu mala",
+            "Vighnachi nashak tu mala"
+        ]
+    },
+    {
+        name: "Ganapati Bappa Morya",
+        language: "Marathi",
+        lyrics: [
+            "Ganapati Bappa Morya",
+            "Pudhchya varshi lavkar ya",
+            "Ganapati Bappa Morya",
+            "Pudhchya varshi lavkar ya",
+            "Ganapati Bappa Morya",
+            "Pudhchya varshi lavkar ya",
+            "Ganapati Bappa Morya",
+            "Pudhchya varshi lavkar ya",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa",
+            "Agle baras tu jaldi aa"
+        ]
+    },
+    {
+        name: "Om Jai Ganeshaya Namaha",
+        language: "Sanskrit",
+        lyrics: [
+            "Om Jai Ganeshaya Namaha",
+            "Om Jai Ganeshaya Namaha",
+            "Om Jai Ganeshaya Namaha",
+            "Om Jai Ganeshaya Namaha",
+            "Gajaananam Bhoota Ganaadhi Sevitam",
+            "Kapitta Jamboophala Saara Bhakshitam",
+            "Uma Sutam Shoka Vinaasha Kaaranam",
+            "Namaami Vighneshwara Paada Pankajam",
+            "Om Jai Ganeshaya Namaha",
+            "Om Jai Ganeshaya Namaha",
+            "Om Jai Ganeshaya Namaha",
+            "Om Jai Ganeshaya Namaha"
         ]
     }
   ],
@@ -127,6 +193,44 @@ export const ganeshaStaticInfo: StaticDeityInfo = {
           "Morya re, Bappa Morya re",
           "Deva tuzhya navacha yed lagala",
           "Sara gao govind jhalay, anand sajala",
+          "Morya re, Bappa Morya re",
+          "Morya re, Bappa Morya re",
+          "Tuzhya charani majhya manacha",
+          "Nirantar prema priti anand sajala",
+          "Morya re, Bappa Morya re",
+          "Morya re, Bappa Morya re"
+      ]
+    },
+    {
+      name: "Ganesh Stotram",
+      language: "Sanskrit",
+      lyrics: [
+          "Shuklaambara Dharam Vishnum",
+          "Shashi Varnam Chatur Bhujam",
+          "Prasanna Vadanam Dhyayet",
+          "Sarva Vighnopa Shaantaye",
+          "Agajaanana Padmaarkam",
+          "Gajaananam Aharnisham",
+          "Aneka Danta Bhaktam",
+          "Tam Ekadantam Upasmahe",
+          "Vakratunda Mahakaya",
+          "Surya Koti Samaprabha",
+          "Nirvighnam Kuru Me Deva",
+          "Sarva Kaaryeshu Sarvada"
+      ]
+    },
+    {
+      name: "Ganesh Atharvashirsha",
+      language: "Sanskrit",
+      lyrics: [
+          "Om Bhadram Karnebhih Shrnuyama Devah",
+          "Bhadram Pashyemaakshabhir Yajatrah",
+          "Sthirair Angais Tushhtuvaamsas Tanubhih",
+          "Vyashema Devahitam Yadaayuh",
+          "Swasti Na Indro Vridhashravah",
+          "Swasti Nah Pushha Vishva Vedah",
+          "Swasti Nastarkshyo Arishtanemih",
+          "Swasti No Brihaspatir Dadhaatu"
       ]
     }
   ],
