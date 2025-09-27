@@ -33,10 +33,6 @@ const Footer: React.FC = () => {
               <UsersIcon className="w-6 h-6" />
               <span className="text-xs">{translations.deities[language]}</span>
             </NavLink>
-             <NavLink to="/guidance" className={navLinkClass}>
-              <HeartIcon className="w-6 h-6" />
-              <span className="text-xs">{translations.guidance[language]}</span>
-            </NavLink>
             <NavLink to="/festivals" className={navLinkClass}>
               <BookOpenIcon className="w-6 h-6" />
               <span className="text-xs">{translations.festivals[language]}</span>

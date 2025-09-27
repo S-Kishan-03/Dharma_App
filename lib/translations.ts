@@ -2,7 +2,6 @@ export const translations = {
   // Header
   home: { en: 'Home', hi: 'होम' },
   deities: { en: 'Deities', hi: 'देवी-देवता' },
-  guidance: { en: 'Guidance', hi: 'मार्गदर्शन' },
   festivals: { en: 'Festivals', hi: 'त्योहार' },
   temples: { en: 'Temples', hi: 'मंदिर' },
   calendar: { en: 'Calendar', hi: 'पंचांग' },
@@ -35,6 +34,7 @@ export const translations = {
   backToFestivals: { en: 'Back to all festivals', hi: 'सभी त्योहारों पर वापस जाएं' },
   celebratedIn: { en: 'Celebrated In', hi: 'यहाँ मनाया जाता है' },
   month: { en: 'Month', hi: 'महीना' },
+  ritualsAndCustoms: { en: 'Rituals & Customs', hi: 'रीति-रिवाज' },
   // Temples Screen
   sacredTemples: { en: 'Sacred Temples of India', hi: 'भारत के पवित्र मंदिर' },
   exploreTemples: { en: 'Explore the architectural marvels and divine abodes.', hi: 'वास्तुशिल्प के चमत्कारों और दिव्य धामों का अन्वेषण करें।' },
@@ -56,13 +56,6 @@ export const translations = {
   generateYear: { en: 'Generate Year', hi: 'वर्ष उत्पन्न करें' },
   saveYear: { en: 'Save Year', hi: 'वर्ष सहेजें' },
   importYear: { en: 'Import Year', hi: 'वर्ष आयात करें' },
-  // Guidance Screen
-  spiritualGuidance: { en: 'Spiritual Guidance', hi: 'आध्यात्मिक मार्गदर्शन' },
-  shareYourThoughts: { en: 'Share your thoughts, emotions, or situation to receive guidance from the wisdom of Sanatan Dharma.', hi: 'सनातन धर्म के ज्ञान से मार्गदर्शन प्राप्त करने के लिए अपने विचार, भावनाएँ या स्थिति साझा करें।' },
-  yourFeelings: { en: 'Describe how you are feeling or the situation you are facing...', hi: 'आप कैसा महसूस कर रहे हैं या आप किस स्थिति का सामना कर रहे हैं, उसका वर्णन करें...' },
-  getGuidance: { en: 'Get Guidance', hi: 'मार्गदर्शन प्राप्त करें' },
-aiGuidance: { en: 'Guidance from Above', hi: 'दैवीय मार्गदर्शन' },
-  relatedStory: { en: 'A Tale of Wisdom', hi: 'ज्ञान की एक कहानी' },
   // Bulk Operations
   contentManagement: { en: 'Content Management', hi: 'सामग्री प्रबंधन' },
   generateAll: { en: 'Generate All', hi: 'सभी उत्पन्न करें' },
@@ -79,6 +72,13 @@ aiGuidance: { en: 'Guidance from Above', hi: 'दैवीय मार्गद
   showingResultsFor: { en: 'Showing results for', hi: 'इसके लिए परिणाम दिखाए जा रहे हैं' },
   performASearch: { en: 'Start by using the search bar to explore topics.', hi: 'विषयों का पता लगाने के लिए खोज बार का उपयोग करके प्रारंभ करें।' },
   backToHome: { en: 'Back to Home', hi: 'होम पर वापस जाएं' },
+  // Guidance Screen
+  spiritualGuidance: { en: 'Spiritual Guidance', hi: 'आध्यात्मिक मार्गदर्शन' },
+  shareYourThoughts: { en: 'Share your thoughts to receive guidance from Hindu philosophy.', hi: 'हिंदू दर्शन से मार्गदर्शन प्राप्त करने के लिए अपने विचार साझा करें।' },
+  yourFeelings: { en: 'Describe your feelings or situation here...', hi: 'अपनी भावनाओं या स्थिति का यहाँ वर्णन करें...' },
+  getGuidance: { en: 'Get Guidance', hi: 'मार्गदर्शन प्राप्त करें' },
+  aiGuidance: { en: 'Guidance from Sanatan Dharma', hi: 'सनातन धर्म से मार्गदर्शन' },
+  relatedStory: { en: 'A Related Story', hi: 'एक संबंधित कहानी' },
   // Gemini errors
   failedToFetchMantra: { en: 'Failed to fetch the daily mantra. Please try again later.', hi: 'दैनिक मंत्र प्राप्त करने में विफल। कृपया बाद में पुनः प्रयास करें।' },
   failedToFetchPrayers: { en: 'Failed to fetch prayers. Please try again.', hi: 'प्रार्थनाएँ प्राप्त करने में विफल। कृपया पुन: प्रयास करें।' },
@@ -86,6 +86,6 @@ aiGuidance: { en: 'Guidance from Above', hi: 'दैवीय मार्गद
   failedToReadFile: { en: 'Failed to read the selected file.', hi: 'चयनित फ़ाइल को पढ़ने में विफल।' },
   failedToFetchStory: { en: 'Failed to fetch the story. Please try again.', hi: 'कहानी प्राप्त करने में विफल। कृपया पुन: प्रयास करें।' },
   failedToFetchEvents: { en: 'Failed to fetch calendar events. Please try again.', hi: 'कैलेंडर ईवेंट प्राप्त करने में विफल। कृपया पुन: प्रयास करें।' },
-  failedToFetchGuidance: { en: 'Failed to fetch guidance. Please try again.', hi: 'मार्गदर्शन प्राप्त करने में विफल। कृपया पुन: प्रयास करें।' },
+  failedToFetchGuidance: { en: 'Failed to fetch spiritual guidance. Please try again.', hi: 'आध्यात्मिक मार्गदर्शन प्राप्त करने में विफल। कृपया पुन: प्रयास करें।' },
   errorProcessingRequest: { en: 'An error occurred. Please try again.', hi: 'एक त्रुटि हुई। कृपया पुन: प्रयास करें।' },
 };

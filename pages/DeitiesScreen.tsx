@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useDeityContent } from '../contexts/DeityContentContext';
 import { translations } from '../lib/translations';
+import { staticDeityData } from '../data/deityData';
 
 const DeitiesScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,9 @@ const DeitiesScreen: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {DEITIES.map((deity) => {
-          const hasContent = !!prayers[deity.id];
+          const hasStaticContent = !!staticDeityData[deity.id];
+          const hasAiContent = !!prayers[deity.id];
+          const hasContent = hasStaticContent || hasAiContent;
           return (
              <Card key={deity.id} onClick={() => navigate(`/deity/${deity.id}`)} className="p-6 text-center relative">
               {hasContent && (

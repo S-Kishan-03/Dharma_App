@@ -1,5 +1,4 @@
 
-
 export interface Deity {
   id: string;
   name: string;
@@ -68,6 +67,35 @@ export interface PanchangDay {
     tithi: string;
     nakshatra: string;
     events: FestivalEvent[];
+}
+
+export interface StaticFestivalInfo {
+  name: string;
+  description: string;
+  story: {
+    title: string;
+    narrative: string;
+  }[];
+  significance: string;
+  rituals_and_customs: {
+      name: string;
+      description: string;
+  }[];
+  mantras: {
+    name: string;
+    mantra: string;
+    meaning: string;
+  }[];
+  aartis: {
+    name: string;
+    language: string;
+    lyrics: string[];
+  }[];
+  bhajans: {
+    name: string;
+    language: string;
+    lyrics: string[];
+  }[];
 }
 
 export interface SpiritualGuidance {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FESTIVALS } from '../data/mockData';
-import type { FestivalStory } from '../types';
+import { staticFestivalData } from '../data/festivalData';
+import type { Festival, FestivalStory, StaticFestivalInfo } from '../types';
 import Card from '../components/Card';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { SparklesIcon } from '../components/Icon';
@@ -9,9 +10,81 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useFestivalContent } from '../contexts/FestivalContentContext';
 import { translations } from '../lib/translations';
 
-const FestivalDetailScreen: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const festival = FESTIVALS.find((f) => f.id === id);
+
+// =================================================================
+// Static Content Component for pre-defined festivals
+// =================================================================
+const StaticFestivalDetailContent: React.FC<{ festival: Festival; festivalInfo: StaticFestivalInfo }> = ({ festival, festivalInfo }) => {
+    const { language } = useLanguage();
+    const [activeTab, setActiveTab] = useState('stories');
+
+    const tabClass = (tabName: string) => `px-4 py-2 font-medium rounded-md transition-colors ${activeTab === tabName ? 'bg-brand-saffron/20 text-brand-saffron-dark dark:bg-brand-gold/20 dark:text-brand-gold' : 'hover:bg-brand-saffron/10 dark:hover:bg-brand-gold/10'}`;
+
+    return (
+        <div className="max-w-4xl mx-auto space-y-8">
+            <Card className="p-8">
+                <div className="text-center">
+                    <h1 className="text-3xl sm:text-4xl font-bold font-serif text-brand-saffron-dark dark:text-brand-gold">{festivalInfo.name}</h1>
+                    <p className="text-lg text-brand-warm-brown/70 dark:text-gray-400 italic mt-1">{festivalInfo.description}</p>
+                </div>
+                 <div className="w-24 h-px bg-brand-saffron/30 dark:bg-brand-gold/30 my-6 mx-auto"></div>
+                <p className="text-brand-warm-brown/90 dark:text-gray-300 leading-relaxed text-center">{festivalInfo.significance}</p>
+            </Card>
+
+            <div>
+                 <div className="border-b border-brand-saffron/20 dark:border-brand-gold/20 mb-6">
+                    <nav className="flex space-x-2 sm:space-x-4 overflow-x-auto" aria-label="Tabs">
+                        <button className={tabClass('stories')} onClick={() => setActiveTab('stories')}>{translations.stories[language]}</button>
+                        <button className={tabClass('rituals')} onClick={() => setActiveTab('rituals')}>{translations.ritualsAndCustoms[language]}</button>
+                        <button className={tabClass('mantras')} onClick={() => setActiveTab('mantras')}>{translations.mantras[language]}</button>
+                        <button className={tabClass('aartis')} onClick={() => setActiveTab('aartis')}>{translations.aartis[language]}</button>
+                        <button className={tabClass('bhajans')} onClick={() => setActiveTab('bhajans')}>{translations.bhajans[language]}</button>
+                    </nav>
+                </div>
+                <div className="space-y-6">
+                    {activeTab === 'stories' && festivalInfo.story.map((storyItem, index) => (
+                        <Card key={index} className="p-6">
+                            <h4 className="text-xl font-semibold font-serif text-brand-saffron-dark dark:text-brand-gold">{storyItem.title}</h4>
+                            <p className="text-brand-warm-brown/90 dark:text-gray-300 leading-relaxed whitespace-pre-line mt-4">{storyItem.narrative}</p>
+                        </Card>
+                    ))}
+                    {activeTab === 'rituals' && festivalInfo.rituals_and_customs.map((item, index) => (
+                        <Card key={index} className="p-6">
+                            <h4 className="text-xl font-semibold font-serif text-brand-saffron-dark dark:text-brand-gold">{item.name}</h4>
+                            <p className="text-brand-warm-brown/90 dark:text-gray-300 leading-relaxed mt-2">{item.description}</p>
+                        </Card>
+                    ))}
+                    {activeTab === 'mantras' && festivalInfo.mantras.map((mantra, index) => (
+                        <Card key={index} className="p-6">
+                            <h4 className="text-xl font-semibold font-serif text-brand-saffron-dark dark:text-brand-gold">{mantra.name}</h4>
+                            <p className="text-lg text-brand-warm-brown/90 dark:text-gray-300 italic my-2">{mantra.mantra}</p>
+                            <p className="text-brand-warm-brown/80 dark:text-gray-400">{mantra.meaning}</p>
+                        </Card>
+                    ))}
+                    {activeTab === 'aartis' && festivalInfo.aartis.map((aarti, index) => (
+                        <Card key={index} className="p-6">
+                            <h4 className="text-xl font-semibold font-serif text-brand-saffron-dark dark:text-brand-gold">{aarti.name}</h4>
+                            <div className="mt-4 space-y-2 text-brand-warm-brown/90 dark:text-gray-300 leading-relaxed font-serif whitespace-pre-line">{aarti.lyrics.join('\n')}</div>
+                        </Card>
+                    ))}
+                    {activeTab === 'bhajans' && festivalInfo.bhajans.map((bhajan, index) => (
+                        <Card key={index} className="p-6">
+                           <h4 className="text-xl font-semibold font-serif text-brand-saffron-dark dark:text-brand-gold">{bhajan.name}</h4>
+                            <div className="mt-4 space-y-2 text-brand-warm-brown/90 dark:text-gray-300 leading-relaxed font-serif whitespace-pre-line">{bhajan.lyrics.join('\n')}</div>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+// =================================================================
+// AI-Powered Dynamic Content Component (Fallback)
+// =================================================================
+const AiPoweredFestivalDetailContent: React.FC<{ festival: Festival }> = ({ festival }) => {
+  const { id } = festival;
   const { language } = useLanguage();
   const { stories, fetchStoryForFestival, isLoading: isContextLoading } = useFestivalContent();
   
@@ -42,18 +115,7 @@ const FestivalDetailScreen: React.FC = () => {
       setIsLoading(false);
     }
   };
-
-  if (!festival) {
-    return (
-      <div className="text-center py-20">
-        <h1 className="text-3xl font-bold dark:text-white">{translations.festivalNotFound[language]}</h1>
-        <Link to="/festivals" className="mt-4 inline-block text-brand-saffron hover:underline">
-          {translations.backToFestivals[language]}
-        </Link>
-      </div>
-    );
-  }
-
+  
   return (
     <div className="max-w-3xl mx-auto">
       <Card className="p-8">
@@ -112,5 +174,36 @@ const FestivalDetailScreen: React.FC = () => {
     </div>
   );
 };
+
+
+// =================================================================
+// Main Router Component
+// =================================================================
+const FestivalDetailScreen: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const festival = FESTIVALS.find((f) => f.id === id);
+  const staticInfo = staticFestivalData[id!];
+  const { language } = useLanguage();
+
+  if (!festival) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="text-3xl font-bold dark:text-white">{translations.festivalNotFound[language]}</h1>
+        <Link to="/festivals" className="mt-4 inline-block text-brand-saffron hover:underline">
+          {translations.backToFestivals[language]}
+        </Link>
+      </div>
+    );
+  }
+
+  // If static info exists for this ID, render the static component
+  if (staticInfo) {
+    return <StaticFestivalDetailContent festival={festival} festivalInfo={staticInfo} />;
+  }
+
+  // Otherwise, render the default AI-powered component
+  return <AiPoweredFestivalDetailContent festival={festival} />;
+};
+
 
 export default FestivalDetailScreen;

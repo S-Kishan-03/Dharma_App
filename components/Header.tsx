@@ -45,10 +45,6 @@ const Header: React.FC = () => {
                 <UsersIcon className="w-5 h-5" />
                 <span>{translations.deities[language]}</span>
               </NavLink>
-              <NavLink to="/guidance" className={navLinkClass}>
-                <HeartIcon className="w-5 h-5" />
-                <span>{translations.guidance[language]}</span>
-              </NavLink>
               <NavLink to="/festivals" className={navLinkClass}>
                 <BookOpenIcon className="w-5 h-5" />
                 <span>{translations.festivals[language]}</span>

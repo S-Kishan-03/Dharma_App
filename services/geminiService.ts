@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { DailyMantra, DeityPrayers, FestivalStory, PanchangDay, SpiritualGuidance } from '../types';
+import type { DailyMantra, DeityPrayers, FestivalStory, SpiritualGuidance } from '../types';
 
 // Safely access the API key to prevent crashes in environments where process.env is not defined.
 const API_KEY = (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : undefined;
@@ -181,56 +181,6 @@ export const getFestivalStory = async (festivalName: string, language: 'en' | 'h
  {
     console.error(`Error fetching story for ${festivalName}:`, error);
     return null;
-  }
-};
-
-export const getMonthlyPanchang = async (month: number, year: number, language: 'en' | 'hi'): Promise<PanchangDay[]> => {
-  if (!ai) {
-    console.error(`Error fetching monthly events for ${month + 1}/${year}: Gemini AI client not initialized.`);
-    return [];
-  }
-  
-  try {
-     const monthName = new Date(year, month).toLocaleString('en-US', { month: 'long' });
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: `For each day of ${monthName} ${year}, provide the Hindu Panchang details: Tithi and Nakshatra. Also, list any major Hindu festivals or auspicious events for each day. If a day has no major event, return an empty array for events. The content (tithi, nakshatra, event names, descriptions) should be in ${language === 'hi' ? 'Hindi (Devanagari script)' : 'English'}. The JSON keys must remain in English.`,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.ARRAY,
-          description: "An array of all days in the month.",
-          items: {
-            type: Type.OBJECT,
-            properties: {
-              day: { type: Type.INTEGER, description: "The day of the month (e.g., 15)." },
-              tithi: { type: Type.STRING, description: "The Tithi for the day." },
-              nakshatra: { type: Type.STRING, description: "The Nakshatra for the day." },
-              events: {
-                type: Type.ARRAY,
-                description: "A list of festivals or events on this day.",
-                items: {
-                  type: Type.OBJECT,
-                  properties: {
-                    eventName: { type: Type.STRING, description: "The name of the festival or event." },
-                    description: { type: Type.STRING, description: "A brief one-sentence description of the event." }
-                  },
-                   required: ["eventName", "description"]
-                }
-              }
-            },
-            required: ["day", "tithi", "nakshatra", "events"]
-          }
-        },
-      },
-    });
-
-    const text = response.text.trim();
-    const eventsData: PanchangDay[] = JSON.parse(text);
-    return eventsData;
-  } catch (error) {
-    console.error(`Error fetching monthly events for ${month + 1}/${year}:`, error);
-    return [];
   }
 };
 

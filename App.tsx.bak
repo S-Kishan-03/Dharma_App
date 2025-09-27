@@ -8,6 +8,7 @@ import DeityDetailScreen from './pages/DeityDetailScreen';
 import FestivalsScreen from './pages/FestivalsScreen';
 import FestivalDetailScreen from './pages/FestivalDetailScreen';
 import CalendarScreen from './pages/CalendarScreen';
+import GuidanceScreen from './pages/GuidanceScreen';
 import TemplesScreen from './pages/TemplesScreen';
 import TempleDetailScreen from './pages/TempleDetailScreen';
 import AiSearchScreen from './pages/AiSearchScreen';
@@ -39,6 +40,7 @@ const App: React.FC = () => {
                         <Route path="/festivals" element={<FestivalsScreen />} />
                         <Route path="/festival/:id" element={<FestivalDetailScreen />} />
                         <Route path="/calendar" element={<CalendarScreen />} />
+                        <Route path="/guidance" element={<GuidanceScreen />} />
                         <Route path="/temples" element={<TemplesScreen />} />
                         <Route path="/temple/:id" element={<TempleDetailScreen />} />
                         <Route path="/ai-search" element={<AiSearchScreen />} />

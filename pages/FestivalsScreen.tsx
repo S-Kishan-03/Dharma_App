@@ -6,10 +6,13 @@ import type { Festival } from '../types';
 import Card from '../components/Card';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../lib/translations';
+import { staticFestivalData } from '../data/festivalData';
+import { useFestivalContent } from '../contexts/FestivalContentContext';
 
 const FestivalsScreen: React.FC = () => {
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const { stories } = useFestivalContent();
 
   const festivalsByMonth = useMemo(() => {
     return FESTIVALS.reduce((acc, festival) => {
@@ -51,8 +54,15 @@ const FestivalsScreen: React.FC = () => {
           <div key={month}>
             <h2 className="text-2xl font-semibold font-serif text-brand-saffron-dark dark:text-brand-gold mb-4 border-b-2 border-brand-saffron/20 dark:border-brand-gold/20 pb-2">{month}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {festivalsByMonth[month].map((festival) => (
-                <Card key={festival.id} onClick={() => navigate(`/festival/${festival.id}`)} className="p-6 flex flex-col">
+              {festivalsByMonth[month].map((festival) => {
+                const hasStaticContent = !!staticFestivalData[festival.id];
+                const hasAiContent = !!stories[festival.id];
+                const hasContent = hasStaticContent || hasAiContent;
+                return (
+                <Card key={festival.id} onClick={() => navigate(`/festival/${festival.id}`)} className="p-6 flex flex-col relative">
+                  {hasContent && (
+                    <div className="absolute top-3 right-3 w-3 h-3 bg-green-500 rounded-full" title={translations.contentAvailable[language]}></div>
+                  )}
                   <div className="flex-grow">
                      <h3 className="text-xl font-bold text-brand-saffron-dark dark:text-brand-gold">{festival.name}</h3>
                      <p className="text-brand-warm-brown/80 dark:text-gray-400 mt-2">{festival.description}</p>
@@ -62,7 +72,7 @@ const FestivalsScreen: React.FC = () => {
                       <p className="text-sm text-brand-warm-brown dark:text-gray-300">{festival.states.join(', ')}</p>
                   </div>
                 </Card>
-              ))}
+              )})}
             </div>
           </div>
         ))}
